@@ -52,12 +52,7 @@
       </select>
     </div>
 
-    <div class="mb-6 bg-white/10 backdrop-blur-xl rounded-3xl p-5 border border-white/10">
-      <h2 class="text-xl font-semibold mb-3">📈 Evolução do treino</h2>
-      <p class="text-zinc-200">🔥 Dias treinados: 7</p>
-      <p class="text-zinc-200">🎯 Melhor sensi: <span id="bestSensi">200</span></p>
-      <p class="text-zinc-200">🏆 Capas acertadas: 128</p>
-    </div>
+    
 
     <div class="mb-6 bg-white/10 backdrop-blur-xl rounded-3xl p-5 border border-white/10">
       <h2 class="text-xl font-semibold mb-3">🧠 IA de sensibilidade</h2>
@@ -121,6 +116,10 @@
       }
     }
 
+    function atualizarStats() {
+      // campos editáveis manualmente
+    }
+
     function toggleTreino() {
       const box = document.getElementById('treinoPassos');
       box.classList.toggle('hidden');
@@ -149,7 +148,12 @@
       document.getElementById('bestSensi').textContent = geral;
       atualizarSensi(geral);
       renderCards();
-      alert(`🧠 IA gerou sensi:\nGeral ${geral}\nRed Dot ${redDot}\n2x ${x2}\n4x ${x4}\nAWM ${awm}`);
+      alert(`🧠 IA gerou sensi:
+Geral ${geral}
+Red Dot ${redDot}
+2x ${x2}
+4x ${x4}
+AWM ${awm}`);
     }
 
     function gerarSensi() {
