@@ -23,6 +23,13 @@
       <p id="recomendacao" class="mt-3 text-zinc-200"></p>
     </div>
 
+    <div class="mb-6 bg-white/10 backdrop-blur-xl rounded-3xl p-5 border border-white/10">
+      <h2 class="text-xl font-semibold mb-3">🎚️ Ajuste fino da sensibilidade</h2>
+      <input id="sliderSensi" type="range" min="0" max="200" value="200" class="w-full" oninput="atualizarSensi(this.value)">
+      <p class="mt-2 text-zinc-200">Sensibilidade atual: <span id="valorSensi">200</span></p>
+      <button onclick="gerarSensi()" class="mt-4 w-full bg-white/90 text-black rounded-2xl py-3 font-bold shadow-xl">⚡ Gerar melhor sensi para armas</button>
+    </div>
+
     <div id="cards" class="grid gap-4"></div>
 
     <div class="mt-8 bg-zinc-900 rounded-3xl p-5 border border-zinc-800">
@@ -52,16 +59,37 @@
       const marca = document.getElementById('marca').value;
       const recomendacao = document.getElementById('recomendacao');
       const dicas = {
-        iphone: '🍎 iPhone: use arrasto curto e rápido, ideal para 120Hz.',
-        samsung: '📱 Samsung: use arrasto médio e HUD 3 dedos.',
-        xiaomi: '⚡ Xiaomi: sensi alta e arrasto firme para capa.',
-        motorola: '🔥 Motorola: treino com arrasto longo e geral 95+' 
+        iphone: { texto: '🍎 iPhone: arrasto curto e rápido, ideal para 120Hz.', sensi: 200 },
+        samsung: { texto: '📱 Samsung: use arrasto médio e HUD 3 dedos.', sensi: 188 },
+        xiaomi: { texto: '⚡ Xiaomi: sensi alta e arrasto firme para capa.', sensi: 194 },
+        motorola: { texto: '🔥 Motorola: treino com arrasto longo e geral alta.', sensi: 182 }
       };
-      recomendacao.textContent = dicas[marca] || 'Selecione a marca para receber a melhor dica de treino.';
+      if (dicas[marca]) {
+        recomendacao.textContent = dicas[marca].texto;
+        document.getElementById('sliderSensi').value = dicas[marca].sensi;
+        atualizarSensi(dicas[marca].sensi);
+      } else {
+        recomendacao.textContent = 'Selecione a marca para receber a melhor dica de treino.';
+      }
+    }
+
+    function atualizarSensi(valor) {
+      document.getElementById('valorSensi').textContent = valor;
+      weapons[0].geral = Number(valor);
+      renderCards();
+    }
+
+    function gerarSensi() {
+      const valor = Math.floor(170 + Math.random() * 31);
+      document.getElementById('sliderSensi').value = valor;
+      atualizarSensi(valor);
+      alert('🔥 Nova sensi gerada para UMP, Carapina, Desert, MP40, M500 e M1014: ' + valor);
     }
 
     const cards = document.getElementById('cards');
-    weapons.forEach(arma => {
+    function renderCards() {
+      cards.innerHTML = '';
+      weapons.forEach(arma => {
       const div = document.createElement('div');
       div.className = 'bg-white/10 backdrop-blur-xl rounded-3xl p-5 shadow-2xl border border-white/10';
       div.innerHTML = `
@@ -76,7 +104,10 @@
         <button onclick="alert('Modo capa aplicado para ${arma.nome}!')" class="mt-4 w-full bg-white/90 text-black rounded-2xl py-3 font-bold shadow-xl">Aplicar modo capa</button>
       `;
       cards.appendChild(div);
-    });
+      });
+    }
+
+    renderCards();
   </script>
 </body>
 </html>
