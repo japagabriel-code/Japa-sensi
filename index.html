@@ -6,7 +6,7 @@
   <title>🍎 Japa Sensi Apple Edition</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="min-h-screen bg-gradient-to-b from-zinc-950 via-zinc-900 to-black text-white p-6">
+<body onload="verificarSenha()" class="min-h-screen bg-gradient-to-b from-zinc-950 via-zinc-900 to-black text-white p-6">
   <div class="max-w-4xl mx-auto">
     <h1 class="text-4xl font-bold mb-2">🍎🎯 Japa Sensi Apple Edition</h1>
     <p class="text-zinc-400 mb-6">Visual premium para iPhone com estilo Apple, sensibilidade por arma e treino de puxada profissional.</p>
@@ -57,6 +57,13 @@
   </div>
 
   <script>
+    function verificarSenha() {
+      const senha = prompt('🔒 Digite a senha para entrar no app:');
+      if (senha !== '171819') {
+        document.body.innerHTML = '<div class="min-h-screen flex items-center justify-center text-white text-2xl font-bold">🔒 Senha incorreta</div>';
+      }
+    }
+
     const weapons = [
       {
         nome: 'UMP • Carapina • Desert • MP40 • M500 • M1014',
