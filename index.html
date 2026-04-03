@@ -1,0 +1,47 @@
+export default function FreeFireTreinoApp() {
+  const weapons = [
+    { nome: 'MP40', geral: 98, redDot: 92, x2: 85, x4: 78, awm: 50 },
+    { nome: 'M1887', geral: 100, redDot: 95, x2: 88, x4: 80, awm: 45 },
+    { nome: 'XM8', geral: 94, redDot: 88, x2: 82, x4: 76, awm: 55 },
+    { nome: 'AK', geral: 90, redDot: 86, x2: 80, x4: 74, awm: 60 },
+  ];
+
+  return (
+    <div className="min-h-screen bg-zinc-950 text-white p-6">
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-3xl font-bold mb-2">🎯 Treino Só Capa FF</h1>
+        <p className="text-zinc-400 mb-6">
+          App de treino legal para iPhone e Android com sensibilidade precisa por arma.
+        </p>
+
+        <div className="grid md:grid-cols-2 gap-4">
+          {weapons.map((arma, i) => (
+            <div key={i} className="bg-zinc-900 rounded-3xl p-5 shadow-lg border border-zinc-800">
+              <h2 className="text-xl font-semibold mb-3">{arma.nome}</h2>
+              <div className="space-y-2 text-sm">
+                <p>Geral: <span className="font-bold">{arma.geral}</span></p>
+                <p>Red Dot: <span className="font-bold">{arma.redDot}</span></p>
+                <p>2x: <span className="font-bold">{arma.x2}</span></p>
+                <p>4x: <span className="font-bold">{arma.x4}</span></p>
+                <p>AWM: <span className="font-bold">{arma.awm}</span></p>
+              </div>
+              <button className="mt-4 w-full bg-white text-black rounded-2xl py-2 font-semibold">
+                Aplicar modo capa
+              </button>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-8 bg-zinc-900 rounded-3xl p-5 border border-zinc-800">
+          <h2 className="text-xl font-semibold mb-3">🔥 Treino de puxada</h2>
+          <ul className="space-y-2 text-zinc-300">
+            <li>• Arrasto curto para iPhone</li>
+            <li>• Arrasto médio para Android</li>
+            <li>• Ajuste para 60Hz / 90Hz / 120Hz</li>
+            <li>• Perfil 2, 3 e 4 dedos</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+}
