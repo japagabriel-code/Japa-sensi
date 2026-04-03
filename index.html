@@ -116,10 +116,6 @@
       }
     }
 
-    function atualizarStats() {
-      // campos editáveis manualmente
-    }
-
     function toggleTreino() {
       const box = document.getElementById('treinoPassos');
       box.classList.toggle('hidden');
@@ -132,11 +128,21 @@
     }
 
     function gerarSensiIA() {
-      const geral = 185 + Math.floor(Math.random() * 16);
-      const redDot = Math.min(200, geral + 2);
-      const x2 = Math.max(0, geral - 12);
-      const x4 = Math.max(0, geral - 24);
-      const awm = Math.max(0, geral - 36);
+      const marca = document.getElementById('marca')?.value || 'iphone';
+      const basePorMarca = {
+        iphone: 200,
+        samsung: 188,
+        xiaomi: 194,
+        motorola: 182
+      };
+
+      const base = basePorMarca[marca] || 190;
+      const ajuste = Math.floor(Math.random() * 5) - 2; // -2 até +2
+      const geral = Math.max(170, Math.min(200, base + ajuste));
+      const redDot = Math.min(200, geral - 2 + 3);
+      const x2 = geral - 18;
+      const x4 = geral - 32;
+      const awm = geral - 44;
 
       weapons[0].geral = geral;
       weapons[0].redDot = redDot;
@@ -145,15 +151,10 @@
       weapons[0].awm = awm;
 
       document.getElementById('sliderSensi').value = geral;
-      document.getElementById('bestSensi').textContent = geral;
       atualizarSensi(geral);
       renderCards();
-      alert(`🧠 IA gerou sensi:
-Geral ${geral}
-Red Dot ${redDot}
-2x ${x2}
-4x ${x4}
-AWM ${awm}`);
+
+      alert(`🧠 Sensi pró gerada para ${marca}:\nGeral ${geral}\nRed Dot ${redDot}\n2x ${x2}\n4x ${x4}\nAWM ${awm}`);
     }
 
     function gerarSensi() {
