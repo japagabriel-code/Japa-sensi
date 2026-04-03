@@ -30,6 +30,19 @@
       <button onclick="gerarSensi()" class="mt-4 w-full bg-white/90 text-black rounded-2xl py-3 font-bold shadow-xl">⚡ Gerar melhor sensi para armas</button>
     </div>
 
+    <div class="mb-6 bg-white/10 backdrop-blur-xl rounded-3xl p-5 border border-white/10">
+      <h2 class="text-xl font-semibold mb-3">🎯 Como treinar</h2>
+      <button onclick="toggleTreino()" class="w-full bg-white/90 text-black rounded-2xl py-3 font-bold shadow-xl">📘 Ver passo a passo de treino</button>
+      <div id="treinoPassos" class="hidden mt-4 text-zinc-200 space-y-2">
+        <p>1️⃣ Ajuste a sensibilidade pela marca do celular.</p>
+        <p>2️⃣ Entre no modo treino do Free Fire.</p>
+        <p>3️⃣ Faça arrastos curtos e rápidos para subir capa.</p>
+        <p>4️⃣ Treine 10 minutos com MP40 e UMP.</p>
+        <p>5️⃣ Depois teste Desert e M500 para precisão.</p>
+        <p>6️⃣ Mantenha a mesma HUD e repita até a memória muscular fixar.</p>
+      </div>
+    </div>
+
     <div id="cards" class="grid gap-4"></div>
 
     <div class="mt-8 bg-zinc-900 rounded-3xl p-5 border border-zinc-800">
@@ -71,6 +84,11 @@
       } else {
         recomendacao.textContent = 'Selecione a marca para receber a melhor dica de treino.';
       }
+    }
+
+    function toggleTreino() {
+      const box = document.getElementById('treinoPassos');
+      box.classList.toggle('hidden');
     }
 
     function atualizarSensi(valor) {
