@@ -23,7 +23,7 @@
       <p id="recomendacao" class="mt-3 text-zinc-200"></p>
     </div>
 
-    <div id="cards" class="grid md:grid-cols-2 gap-4"></div>
+    <div id="cards" class="grid gap-4"></div>
 
     <div class="mt-8 bg-zinc-900 rounded-3xl p-5 border border-zinc-800">
       <h2 class="text-xl font-semibold mb-3">🔥 Treino de puxada</h2>
@@ -38,12 +38,14 @@
 
   <script>
     const weapons = [
-      { nome: 'UMP', geral: 200, redDot: 192, x2: 178, x4: 166, awm: 154 },
-      { nome: 'Carapina', geral: 200, redDot: 192, x2: 178, x4: 166, awm: 154 },
-      { nome: 'Desert', geral: 200, redDot: 192, x2: 178, x4: 166, awm: 154 },
-      { nome: 'MP40', geral: 200, redDot: 192, x2: 178, x4: 166, awm: 154 },
-      { nome: 'M500', geral: 200, redDot: 192, x2: 178, x4: 166, awm: 154 },
-      { nome: 'M1014', geral: 200, redDot: 192, x2: 178, x4: 166, awm: 154 }
+      {
+        nome: 'UMP • Carapina • Desert • MP40 • M500 • M1014',
+        geral: 200,
+        redDot: 192,
+        x2: 178,
+        x4: 166,
+        awm: 154
+      }
     ];
 
     function mostrarTreino() {
