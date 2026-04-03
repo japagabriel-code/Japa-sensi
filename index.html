@@ -43,6 +43,34 @@
       </div>
     </div>
 
+    <div class="mb-6 bg-white/10 backdrop-blur-xl rounded-3xl p-5 border border-white/10">
+      <h2 class="text-xl font-semibold mb-3">🎮 Simulador de HUD</h2>
+      <select class="w-full p-3 rounded-2xl text-black font-semibold">
+        <option>2 dedos</option>
+        <option>3 dedos</option>
+        <option>4 dedos</option>
+      </select>
+    </div>
+
+    <div class="mb-6 bg-white/10 backdrop-blur-xl rounded-3xl p-5 border border-white/10">
+      <h2 class="text-xl font-semibold mb-3">📈 Evolução do treino</h2>
+      <p class="text-zinc-200">🔥 Dias treinados: 7</p>
+      <p class="text-zinc-200">🎯 Melhor sensi: <span id="bestSensi">200</span></p>
+      <p class="text-zinc-200">🏆 Capas acertadas: 128</p>
+    </div>
+
+    <div class="mb-6 bg-white/10 backdrop-blur-xl rounded-3xl p-5 border border-white/10">
+      <h2 class="text-xl font-semibold mb-3">🧠 IA de sensibilidade</h2>
+      <button onclick="gerarSensiIA()" class="w-full bg-white/90 text-black rounded-2xl py-3 font-bold shadow-xl">Gerar sensi perfeita</button>
+    </div>
+
+    <div class="mb-6 bg-white/10 backdrop-blur-xl rounded-3xl p-5 border border-white/10">
+      <h2 class="text-xl font-semibold mb-3">🎥 Mini aula</h2>
+      <p class="text-zinc-200">• Mire no peito e arraste rápido.</p>
+      <p class="text-zinc-200">• Use MP40 e UMP no treino.</p>
+      <p class="text-zinc-200">• Repita por 10 minutos diários.</p>
+    </div>
+
     <div id="cards" class="grid gap-4"></div>
 
     <div class="mt-8 bg-zinc-900 rounded-3xl p-5 border border-zinc-800">
@@ -102,6 +130,14 @@
       document.getElementById('valorSensi').textContent = valor;
       weapons[0].geral = Number(valor);
       renderCards();
+    }
+
+    function gerarSensiIA() {
+      const valor = 185 + Math.floor(Math.random() * 16);
+      document.getElementById('sliderSensi').value = valor;
+      atualizarSensi(valor);
+      document.getElementById('bestSensi').textContent = valor;
+      alert('🧠 IA gerou sensi perfeita: ' + valor);
     }
 
     function gerarSensi() {
