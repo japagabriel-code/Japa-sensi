@@ -133,11 +133,23 @@
     }
 
     function gerarSensiIA() {
-      const valor = 185 + Math.floor(Math.random() * 16);
-      document.getElementById('sliderSensi').value = valor;
-      atualizarSensi(valor);
-      document.getElementById('bestSensi').textContent = valor;
-      alert('🧠 IA gerou sensi perfeita: ' + valor);
+      const geral = 185 + Math.floor(Math.random() * 16);
+      const redDot = Math.min(200, geral + 2);
+      const x2 = Math.max(0, geral - 12);
+      const x4 = Math.max(0, geral - 24);
+      const awm = Math.max(0, geral - 36);
+
+      weapons[0].geral = geral;
+      weapons[0].redDot = redDot;
+      weapons[0].x2 = x2;
+      weapons[0].x4 = x4;
+      weapons[0].awm = awm;
+
+      document.getElementById('sliderSensi').value = geral;
+      document.getElementById('bestSensi').textContent = geral;
+      atualizarSensi(geral);
+      renderCards();
+      alert(`🧠 IA gerou sensi:\nGeral ${geral}\nRed Dot ${redDot}\n2x ${x2}\n4x ${x4}\nAWM ${awm}`);
     }
 
     function gerarSensi() {
